@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stopwatch</title>
+</head>
+
+<body>
+
+  <h2>Stopwatch</h2>
+
+  <p id="time">0 : 00</p>
+
+  <button onclick="start()">Start</button>
+  <button onclick="stop()">Stop</button>
+  <button onclick="reset()">Reset</button>
+
+  <script>
+    var sec = 0;
+    var min = 0;
+    var t;
+
+    function start() {
+      t = setInterval(function () {
+        sec++;
+
+        if (sec == 60) {
+          min++;
+          sec = 0;
+        }
+
+        if (sec < 10) {
+          document.getElementById("time").innerHTML = min + " : 0" + sec;
+        } else {
+          document.getElementById("time").innerHTML = min + " : " + sec;
+        }
+
+      }, 1000);
+    }
+
+    function stop() {
+      clearInterval(t);
+    }
+
+    function reset() {
+      clearInterval(t);
+      sec = 0;
+      min = 0;
+      document.getElementById("time").innerHTML = "0 : 00";
+    }
+  </script>
+
+</body>
+</html>
